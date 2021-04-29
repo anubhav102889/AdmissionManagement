@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm 
+http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+
+<named-native-query name="Student.admissionSeatsAvailable" result-set-mapping="seatAvailableMapping">
+	<query><![CDATA[SELECT dept.deptid,
+       adType.typeid,
+       ( ( adType.percentallocated / 100 ) * dept.totalseats -
+         Count(stu.studentid) )
+       AS seatsAvailable
+FROM   department dept,
+       student stu,
+       admissiontype adtype
+WHERE  dept.deptid = stu.studeptid
+       AND adtype.typeid = stu.stuadmisstypeid
+       AND dept.deptId=:deptId and adtype.typeId=:typeId
+GROUP  BY dept.deptid,
+          adType.typeid ]]></query>
+</named-native-query>
+
+<sql-result-set-mapping name="seatAvailableMapping">
+	<constructor-result target-class="com.example.AdmissionManagement.Pojos.SeatAvailablePojo">
+		<column name="deptid"/>
+		<column name="typeid"/>
+		<column name="seatsAvailable" class="java.lang.Integer"/>
+	</constructor-result>
+
+</sql-result-set-mapping>
+</entity-mappings>
