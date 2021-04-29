@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AdmissionManagementApplication {
 
 	public static void main(String[] args) {
-		System.out.println("dev clash changes");
+		System.out.println("dev change number 5");
 		SpringApplication.run(AdmissionManagementApplication.class, args);
 	}
 
