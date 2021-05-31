@@ -24,6 +24,9 @@ public class AdmissionType {
 	@Column(name = "typeName")
 	private String typeName;
 	
+	@Column(name="percentAllocated")
+	private Integer percentAllocated;
+	
 	@OneToOne(mappedBy = "admissionType")
 	@JsonIgnore
 	private Student student;
@@ -42,6 +45,15 @@ public class AdmissionType {
 
 	public void setTypeName(String typeName) {
 		this.typeName = typeName;
+	}
+	
+
+	public Integer getPercentAllocated() {
+		return percentAllocated;
+	}
+
+	public void setPercentAllocated(Integer percentAllocated) {
+		this.percentAllocated = percentAllocated;
 	}
 
 	public Student getStudent() {
