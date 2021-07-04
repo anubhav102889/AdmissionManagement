@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  stages {
+    stage(CLEAN) {
+      steps {
+        withMaven(maven: 'Maven 3.6') {
+          bat 'mvn clean'
+        }
+      }
+    }
+    stage(INSTALL) {
+      steps {
+        withMaven(maven: 'Maven 3.6') {
+          bat 'mvn install -DskipTests'
+        }
+      }
+    }
+  }
+}
