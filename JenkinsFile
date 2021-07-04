@@ -1,4 +1,3 @@
-//Jenkins Script
 pipeline {
   agent any
   stages {
