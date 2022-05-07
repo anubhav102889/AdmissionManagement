@@ -6,7 +6,7 @@ pipeline {
     stage(CLEAN) {
       steps {
         withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
-          bat mvn clean
+          mvn clean
         }
       }
     }
@@ -14,7 +14,7 @@ pipeline {
     stage(INSTALL) {
       steps {
         withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
-          bat mvn install -DskipTests
+          mvn install -DskipTests
         }
       }
     }
