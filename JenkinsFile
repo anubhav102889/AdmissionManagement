@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   stages {
-    stage(CLEAN) {
+    stage(clean) {
       steps {
         withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
           bat 'mvn clean'
@@ -11,7 +11,7 @@ pipeline {
       }
     }
 
-    stage(INSTALL) {
+    stage(install) {
       steps {
         withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
           bat 'mvn install -DskipTests'
