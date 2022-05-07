@@ -1,0 +1,23 @@
+pipeline {
+
+  agent any
+
+  stages {
+    stage(CLEAN) {
+      withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
+        steps {
+          bat mvn clean
+        }
+      }
+    }
+
+    stage(INSTALL) {
+      withMaven(maven: 'Maven 3.6', jdk: 'JDK 11') {
+        steps {
+          bat mvn install - DskipTests
+        }
+      }
+    }
+
+  }
+}
